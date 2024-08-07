@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import Weather from "./components/Weather/Weather";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    alert("Login successful");
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    alert("Logged out successfully");
+  };
+
+  const handleRegister = () => {
+    alert("Registration successful");
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        <div className="container">
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route
+              exact
+              path="/register"
+              element={<Register onRegister={handleRegister} />}
+            />
+            <Route
+              exact
+              path="/login"
+              element={<Login onLogin={handleLogin} />}
+            />
+            <Route
+              exact
+              path="/weather"
+              element={<Weather onLogout={handleLogout} />}
+            />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

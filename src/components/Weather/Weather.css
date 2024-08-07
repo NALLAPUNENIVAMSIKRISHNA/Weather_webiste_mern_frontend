@@ -1,0 +1,21 @@
+body {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+  }
+  
+  .weather-details h2 {
+    font-size: 2rem;
+  }
+  
+  .weather-details p {
+    margin: 0;
+  }
