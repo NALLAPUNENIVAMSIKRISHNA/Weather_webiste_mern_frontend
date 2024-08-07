@@ -11,7 +11,7 @@ const Register = ({ onRegister }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/register", {
+      const response = await axios.post("https://weather-webiste-mern-backend.onrender.com/register", {
         username,
         password,
       });
